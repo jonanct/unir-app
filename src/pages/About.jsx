@@ -11,7 +11,7 @@ export default function About() {
           experiencia única.
         </h6>
         <br />
-        <img src="/logo-1.jpg" alt="Ukiyo-E" />
+        <img src="/logo-1.jpg" alt="Ukiyo-E" className="about__img" />
       </div>
     </>
   );
