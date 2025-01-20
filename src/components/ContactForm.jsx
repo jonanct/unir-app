@@ -73,10 +73,12 @@ class ContactForm extends Component {
               required
             ></textarea>
           </div>
+          <br />
           <button type="submit" className="btn btn-primary">
             Enviar
           </button>
         </form>
+        <br />
       </div>
     );
   }

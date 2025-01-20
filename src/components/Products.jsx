@@ -8,7 +8,7 @@ const products = [
     name: "Lienzo de Algodón",
     description: "Un lienzo de alta calidad para tus mejores obras.",
     price: 100,
-    imageUrl: "./OIP.jpg", // Cambia esto con la ruta correcta
+    imageUrl: "./lienzos.jpg", // Cambia esto con la ruta correcta
   },
   {
     id: 2,
