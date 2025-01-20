@@ -23,12 +23,10 @@ class ContactForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // Aquí puedes manejar el envío del formulario, por ejemplo, enviarlo a un servidor
     console.log("Formulario enviado:", this.state);
   }
 
   componentDidMount() {
-    // Simula un efecto secundario, como la validación del formulario
     console.log("El componente ContactForm se ha montado");
   }
 

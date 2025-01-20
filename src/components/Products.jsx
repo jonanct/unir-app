@@ -8,21 +8,21 @@ const products = [
     name: "Lienzo de Algodón",
     description: "Un lienzo de alta calidad para tus mejores obras.",
     price: 100,
-    imageUrl: "./lienzos.jpg", // Cambia esto con la ruta correcta
+    imageUrl: "./lienzos.jpg",
   },
   {
     id: 2,
     name: "Pinceles de Madera",
     description: "Pinceles de diferentes tamaños para todos tus proyectos.",
     price: 40,
-    imageUrl: "./pinceles.jpg", // Cambia esto con la ruta correcta
+    imageUrl: "./pinceles.jpg",
   },
   {
     id: 3,
     name: "Pintura Acrílica",
     description: "Pintura de colores vibrantes y duraderos.",
     price: 40,
-    imageUrl: "./pinturas.jpg", // Cambia esto con la ruta correcta
+    imageUrl: "./pinturas.jpg",
   },
 ];
 
