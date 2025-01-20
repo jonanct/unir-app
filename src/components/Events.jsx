@@ -5,22 +5,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const events = [
   {
     id: 1,
-    name: "Concierto de Rock",
-    description: "Un concierto de rock con las mejores bandas.",
+    name: "Ven y pinta a tu ser amado",
+    description: "Ven y pinta a tu ser amado en este día especial.",
     date: "2023-11-01",
     imageUrl: "./evento-valentin.png",
   },
   {
     id: 2,
-    name: "Feria de Libros",
-    description: "Una feria con los mejores libros y autores.",
+    name: "Celebra San Valentín pintando",
+    description: "Celebra con nosotros el día de San Valentín pintando.",
     date: "2023-11-15",
     imageUrl: "./evento-valentin2.png",
   },
   {
     id: 3,
-    name: "Exposición de Arte",
-    description: "Una exposición de arte contemporáneo.",
+    name: "Experiencia navideña",
+    description: "Pinta tu navidad en un lienzo.",
     date: "2023-12-01",
     imageUrl: "./evento-navidad.png",
   },
