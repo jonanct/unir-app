@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class ContactForm extends Component {
@@ -8,10 +9,12 @@ class ContactForm extends Component {
       name: "",
       email: "",
       message: "",
+      showConfirmation: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCloseConfirmation = this.handleCloseConfirmation.bind(this);
   }
 
   handleChange(event) {
@@ -21,9 +24,37 @@ class ContactForm extends Component {
     });
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
-    console.log("Formulario enviado:", this.state);
+    const { name, email, message } = this.state;
+    const contacto = { name, email, message };
+
+    try {
+      const response = await fetch("http://localhost:8081/api/contactos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contacto),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log("Contacto creado:", data);
+      this.setState({
+        name: "",
+        email: "",
+        message: "",
+        showConfirmation: true,
+      });
+    } catch (error) {
+      console.error("Error creando el contacto:", error);
+    }
+  }
+
+  handleCloseConfirmation() {
+    this.setState({ showConfirmation: false });
   }
 
   componentDidMount() {
@@ -77,6 +108,26 @@ class ContactForm extends Component {
           </button>
         </form>
         <br />
+
+        <Modal
+          show={this.state.showConfirmation}
+          onHide={this.handleCloseConfirmation}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>¡Te contactaremos pronto!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>
+              Gracias por contactarnos. Nos pondremos en contacto contigo
+              pronto.
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={this.handleCloseConfirmation}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }

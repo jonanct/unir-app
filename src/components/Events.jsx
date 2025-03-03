@@ -1,33 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EventRegistrationForm from "./EventRegistrationForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const events = [
-  {
-    id: 1,
-    name: "Ven y pinta a tu ser amado",
-    description: "Ven y pinta a tu ser amado en este día especial.",
-    date: "2025-02-16",
-    imageUrl: "./evento-valentin.png",
-  },
-  {
-    id: 2,
-    name: "Celebra San Valentín pintando",
-    description: "Celebra con nosotros el día de San Valentín pintando.",
-    date: "2025-02-14",
-    imageUrl: "./evento-valentin2.png",
-  },
-  {
-    id: 3,
-    name: "Experiencia navideña",
-    description: "Pinta tu navidad en un lienzo.",
-    date: "2024-12-15",
-    imageUrl: "./evento-navidad.png",
-  },
-];
-
 export default function Events() {
+  const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
+
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const response = await fetch("http://localhost:8081/api/eventos");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setEvents(data);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    }
+
+    fetchEvents();
+  }, []);
 
   function handleRegisterClick(event) {
     setSelectedEvent(event);
@@ -52,9 +46,7 @@ export default function Events() {
             <p className="card-text">{event.date}</p>
             <button
               className="btn btn-primary"
-              onClick={function () {
-                handleRegisterClick(event);
-              }}
+              onClick={() => handleRegisterClick(event)}
             >
               Registrarse
             </button>
@@ -68,9 +60,11 @@ export default function Events() {
     <div className="container mt-4">
       <h2 className="events">Próximos Eventos</h2>
       <div className="row">
-        {events.map(function (event) {
-          return renderEventCard(event);
-        })}
+        {events.length > 0 ? (
+          events.map((event) => renderEventCard(event))
+        ) : (
+          <p>No hay eventos disponibles.</p>
+        )}
       </div>
       {selectedEvent && (
         <EventRegistrationForm
