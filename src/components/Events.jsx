@@ -9,7 +9,9 @@ export default function Events() {
   useEffect(() => {
     async function fetchEvents() {
       try {
-        const response = await fetch("http://localhost:8081/api/eventos");
+        const response = await fetch(
+          "https://backend-production-092b.up.railway.app:8081/api/eventos"
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

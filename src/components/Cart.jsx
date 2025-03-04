@@ -12,13 +12,16 @@ export default function Cart() {
     const orden = { productos: cart, total };
 
     try {
-      const response = await fetch("http://localhost:8081/api/ordenes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orden),
-      });
+      const response = await fetch(
+        "https://backend-production-092b.up.railway.app:8081/api/ordenes",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(orden),
+        }
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

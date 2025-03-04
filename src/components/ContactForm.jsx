@@ -30,13 +30,16 @@ class ContactForm extends Component {
     const contacto = { name, email, message };
 
     try {
-      const response = await fetch("http://localhost:8081/api/contactos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(contacto),
-      });
+      const response = await fetch(
+        "https://backend-production-092b.up.railway.app:8081/api/contactos",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(contacto),
+        }
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

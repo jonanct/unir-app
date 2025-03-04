@@ -30,13 +30,16 @@ export default function EventRegistrationForm(props) {
     };
 
     try {
-      const response = await fetch("http://localhost:8081/api/registros", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(registro),
-      });
+      const response = await fetch(
+        "https://backend-production-092b.up.railway.app:8081/api/registros",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(registro),
+        }
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

@@ -9,7 +9,9 @@ export default function Products() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch("http://localhost:8081/api/productos");
+        const response = await fetch(
+          "https://backend-production-092b.up.railway.app:8081/api/productos"
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
